@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorbackground"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:screenOrientation="portrait">
+
+    <ImageButton
+        android:id="@+id/SignUp"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/SignIn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="31dp"
+        android:background="@drawable/elementsvertical"
+        android:scaleType="center"
+        android:src="@mipmap/ic_signup" />
+
+    <ImageButton
+        android:id="@+id/SignIn"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/SignUp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/SignUp"
+        android:layout_marginBottom="62dp"
+        android:background="@drawable/elementsvertical"
+        android:scaleType="center"
+        android:src="@mipmap/ic_signin" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="280dp"
+        android:layout_alignEnd="@+id/SignUp"
+        android:layout_alignLeft="@+id/SignUp"
+
+        android:layout_alignRight="@+id/SignUp"
+        android:layout_alignStart="@+id/SignUp"
+        android:layout_marginTop="16dp"
+        android:src="@mipmap/ic_image0" />
+
+</RelativeLayout>
