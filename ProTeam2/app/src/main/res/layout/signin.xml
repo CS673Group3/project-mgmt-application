@@ -13,8 +13,8 @@
         android:layout_marginTop="10dp"
         android:adjustViewBounds="true"
         android:src="@mipmap/back"
-        android:maxWidth="82dp"
-        android:maxHeight="82dp"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
         android:scaleType="fitCenter"
         android:background="@color/white"
      />
