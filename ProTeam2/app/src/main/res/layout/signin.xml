@@ -81,7 +81,7 @@
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:fontFamily="sans-serif"
-        android:textSize="30dp"
+        android:textSize="25dp"
 
         />
 
