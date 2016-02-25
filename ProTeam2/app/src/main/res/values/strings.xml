@@ -8,8 +8,8 @@
     <string name="password_hint">Password field</string>
     <string name="confirmPassword_hint">Confirm Pass</string>
     <string name="confirmPassword">Confirm </string>
-    <string name ="signIn_name">Sign In</string>
-    <string name ="signUp_name">Sign Up</string>
+    <string name="signIn_name">Sign In</string>
+    <string name="signUp_name">Sign Up</string>
     <string name="back_button"><ul>Back</ul></string>
     <string name="person_firstname">First name</string>
     <string name="firstname_hint">firstname field</string>
@@ -17,4 +17,7 @@
     <string name="lastname_hint">lastname field</string>
     <string name="person_email">Email</string>
     <string name="email_hint">Email field</string>
+    <string name="title_activity_sig_in">SigIn</string>
+    <string name="title_activity_sign_in">SignIn</string>
+    <string name="title_activity_sign_up">SignUp</string>
 </resources>
