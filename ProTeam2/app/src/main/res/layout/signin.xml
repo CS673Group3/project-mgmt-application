@@ -17,7 +17,7 @@
         android:maxHeight="50dp"
         android:scaleType="fitCenter"
         android:background="@color/white"
-     />
+        android:onClick="setContentView" />
 
     <TextView
         android:layout_below="@+id/back_SignIn"
@@ -71,7 +71,7 @@
         android:layout_marginLeft="20dp"/>
 
     <Button
-        android:id="@+id/SignIn"
+        android:id="@+id/Submit"
         android:layout_width="325dp"
         android:layout_height="70dp"
         android:layout_below="@+id/password_input"
@@ -83,7 +83,7 @@
         android:fontFamily="sans-serif"
         android:textSize="30dp"
 
-        />
+        android:onClick="setContentView" />
 
 
     <TextView
@@ -93,9 +93,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/forgot_password"
-        android:onClick="forgotPassword"
+        android:onClick="setContentView"
         android:clickable="true"
-        android:layout_below="@+id/SignIn"
+        android:layout_below="@+id/Submit"
         android:gravity="center"
         android:layout_marginLeft="130dp"
         android:layout_marginTop="20dp"

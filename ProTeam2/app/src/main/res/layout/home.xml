@@ -8,10 +8,10 @@
     android:screenOrientation="portrait">
 
     <ImageButton
-        android:id="@+id/SignUp"
+        android:id="@+id/SignUpbtn"
         android:layout_width="350dp"
         android:layout_height="50dp"
-        android:layout_above="@+id/SignIn"
+        android:layout_above="@+id/SignUpbtn"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="31dp"
         android:background="@drawable/elements"
@@ -20,12 +20,12 @@
         android:onClick="setContentView" />
 
     <ImageButton
-        android:id="@+id/SignIn"
+        android:id="@+id/SignUpbtn"
         android:layout_width="350dp"
         android:layout_height="50dp"
-        android:layout_alignLeft="@+id/SignUp"
+        android:layout_alignLeft="@+id/SignUpbtn"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/SignUp"
+        android:layout_alignStart="@+id/SignUpbtn"
         android:layout_marginBottom="62dp"
         android:background="@drawable/elements"
         android:scaleType="center"
@@ -36,11 +36,11 @@
         android:id="@+id/imageView"
         android:layout_width="200dp"
         android:layout_height="280dp"
-        android:layout_alignEnd="@+id/SignUp"
-        android:layout_alignLeft="@+id/SignUp"
+        android:layout_alignEnd="@+id/SignUpbtn"
+        android:layout_alignLeft="@+id/SignUpbtn"
 
-        android:layout_alignRight="@+id/SignUp"
-        android:layout_alignStart="@+id/SignUp"
+        android:layout_alignRight="@+id/SignUpbtn"
+        android:layout_alignStart="@+id/SignUpbtn"
         android:layout_marginTop="16dp"
         android:src="@mipmap/ic_image0" />
 

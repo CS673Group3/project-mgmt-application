@@ -17,8 +17,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
-        signIn = (ImageButton) findViewById(R.id.SignIn);
-        signUp = (ImageButton) findViewById(R.id.SignUp);
+        signIn = (ImageButton) findViewById(R.id.SignUpbtn);
+        signUp = (ImageButton) findViewById(R.id.SignUpbtn);
       View.OnClickListener handler = new View.OnClickListener() {
           @Override
           public void onClick(View v) {
