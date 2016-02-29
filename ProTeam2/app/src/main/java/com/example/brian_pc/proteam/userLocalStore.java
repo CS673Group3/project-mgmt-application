@@ -6,19 +6,21 @@ import android.content.SharedPreferences;
 /**
  * Created by bkabuye on 2/25/2016.
  */
-public class LocalUserStore {
+public class userLocalStore {
 
     public static final String SP_NAME = "userDetails";
     SharedPreferences userLocalDatabase;
-    public LocalUserStore(Context context){
+    public userLocalStore(Context context){
         userLocalDatabase = context.getSharedPreferences(SP_NAME, 0);
     }
 
     public void storeUserData(User user){
      SharedPreferences.Editor spEditor = userLocalDatabase.edit();
-        spEditor.putString("name",user.name);
+        spEditor.putString("Firstname",user.Firstname);
+        spEditor.putString("Lastname",user.Lastname);
         spEditor.putString("username" ,user.username);
-        spEditor.putString("password", user.pass);
+        spEditor.putString("password", user.passWord);
+        spEditor.putString("Email", user.email);
         spEditor.commit();
     }
 

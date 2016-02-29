@@ -4,11 +4,20 @@ import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.apache.http.params.HttpParams;
 
 import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.lang.*;
 import java.util.HashMap;
@@ -46,14 +55,52 @@ public class ServerRequest {
           this.user = user;
           this.userCallBack = callBack;
       }
+
+      private String getEncodedData(Map<String, String> data) {
+          StringBuilder sb = new StringBuilder();
+          for (String key : data.keySet()) {
+              String value = null;
+              try {
+                  value = URLEncoder.encode(data.get(key), "UTF-8");
+
+              } catch (UnsupportedEncodingException e) {
+                  e.getMessage();
+              }
+              if (sb.length() > 0) {
+                  sb.append("&");
+                  sb.append(key + "=" + value);
+              }
+          }
+         return sb.toString();
+      }
+
       @Override
       protected Void doInBackground(Void... params) {
           Map<String, String> dataToSend = new HashMap<>();
-          dataToSend.put("name", user.name);
+          dataToSend.put("Firstname", user.Firstname);
+          dataToSend.put("Lastname", user.Lastname);
           dataToSend.put("username", user.username);
-          dataToSend.put("password",user.pass);
+          dataToSend.put("password",user.passWord);
+          String encodedStr = getEncodedData(dataToSend);
+           try{
+               URL url = new URL(SERVER_ADDRESS + "Register.aspx");
+               HttpURLConnection con = (HttpURLConnection) url.openConnection();
+               con.setRequestMethod("POST");
+               con.setDoInput(true);
+               OutputStreamWriter writer = new OutputStreamWriter(con.getOutputStream());
+               writer.write(encodedStr);
+               writer.flush();
 
+               StringBuilder sb = new StringBuilder();
+               BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+               String line;
+               while((line = reader.readLine())!= null){
+                  sb.append(line + "\n");
+               }
 
+           }catch(Exception ex){
+               Log.e("Error", ex.getMessage());
+           }
           return null;
       }
        @Override

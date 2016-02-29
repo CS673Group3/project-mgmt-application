@@ -1,6 +1,6 @@
 package com.example.brian_pc.proteam;
 
-import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +14,7 @@ public class SignInActivity extends AppCompatActivity{
     EditText userName, passWord;
     Button signIn;
     TextView forGot;
-    LocalUserStore userLocalStore;
+    com.example.brian_pc.proteam.userLocalStore userLocalStore;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,46 +23,28 @@ public class SignInActivity extends AppCompatActivity{
         passWord = (EditText) findViewById(R.id.password_input);
         signIn = (Button) findViewById(R.id.Submit);
         forGot = (TextView) findViewById(R.id.forgotPassword);
-        userLocalStore = new LocalUserStore(this);
         View.OnClickListener handler = new View.OnClickListener(){
-
-            protected void onStart(){
-              if(authenticate() == true){
-                  displayUserDetail();  // user goes to another page
-              }
-                else{
-                  startActivity(new Intent(SignInActivity.this, SignInActivity.class));
-              }
-
-          }
-            private void displayUserDetail(){
-                User user = userLocalStore.getLoggedInUser();
-
-                    userName.setText(user.username + " "+ user.name);
-
-            }
-
-            private boolean authenticate(){
-                return userLocalStore.getUserLoggedIn();
-            }
 
             @Override
             public void onClick(View v) {
 
                 if(v == signIn){
-                    User user = new User(null, null);
-                    userLocalStore.storeUserData(user);
-                    userLocalStore.setUserLoggedIn(true);
+                    String username = userName.getText().toString();
+                    String password = passWord.getText().toString();
+                    User user = new User(username, password);
+                    if(user.authenticate()==  true){
+                       UserLogIn(user);
+                    }
+
                 }
                  else if (v == forGot){
                     //Intent passwordForgot = new Intent();
                 }
                   else{
-                    Intent validate = new Intent(SignInActivity.this, MainActivity.class);
-                         userLocalStore.clearUserData();
-                         userLocalStore.setUserLoggedIn(false);
-                         startActivity(validate);
-
+                    AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(SignInActivity.this);
+                    dialogBuilder.setMessage("Incorrect User details");
+                    dialogBuilder.setPositiveButton("OK", null);
+                    dialogBuilder.show();
                 }
             }
 
@@ -70,5 +52,9 @@ public class SignInActivity extends AppCompatActivity{
         signIn.setOnClickListener(handler);
         forGot.setOnClickListener(handler);
    }
-
+     private void UserLogIn(User returneduser){
+       userLocalStore.storeUserData(returneduser);
+         userLocalStore.setUserLoggedIn(true);
+         startActivity(new Intent(this, MainActivity.class));
+   }
 }

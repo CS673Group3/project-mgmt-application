@@ -35,7 +35,6 @@ public class ConnectionClass {
         }catch(Exception ex){
              Log.e("ERROR", ex.getMessage());
         }
-
          return conn;
     }
 
