@@ -39,7 +39,7 @@ public class SignUpActivity extends AppCompatActivity {
                     String Username = userName.getText().toString();
                     String Email = email.getText().toString();
                     String Pass = passWord.getText().toString();
-                    User registeredData = new User(Firstname, Lastname, Username, Pass);
+                    User registeredData = new User(Firstname, Lastname, Username, Pass, Email);
                 }
                 else if (v == cancel){
 
