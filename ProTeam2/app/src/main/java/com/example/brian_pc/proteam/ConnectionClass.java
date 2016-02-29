@@ -2,7 +2,6 @@ package com.example.brian_pc.proteam;
 
 import android.os.StrictMode;
 import android.util.Log;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -28,11 +27,15 @@ public class ConnectionClass {
             Class.forName(driver);
             ConnURL = "jdbc:jtds:sqlserver://"+ip+";"+"databaseName="+db+";user="+username+";password="+password+";";
             conn = DriverManager.getConnection(ConnURL);
-        }catch(ClassNotFoundException e){
+        }catch(SQLException se){
+            Log.e("ERROR", se.getMessage());
+        }
+        catch(ClassNotFoundException e){
             Log.e("ERROR", e.getMessage());
         }catch(Exception ex){
              Log.e("ERROR", ex.getMessage());
         }
+
          return conn;
     }
 
