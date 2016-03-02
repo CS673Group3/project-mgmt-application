@@ -7,28 +7,28 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageButton;
+import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class HomePage extends AppCompatActivity {
 
-    ImageButton signIn, signUp;
+    Button signIn, signUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
-        signIn = (ImageButton) findViewById(R.id.SignUpbtn);
-        signUp = (ImageButton) findViewById(R.id.SignUpbtn);
+        signIn = (Button) findViewById(R.id.Login);
+        signUp = (Button) findViewById(R.id.SignUp);
       View.OnClickListener handler = new View.OnClickListener() {
           @Override
           public void onClick(View v) {
               if(v == signIn) {
-                  Intent startNewActivity = new Intent(MainActivity.this, SignInActivity.class);
+                  Intent startNewActivity = new Intent(HomePage.this, Login.class);
                    startActivity(startNewActivity);
                     Log.i("Content", "SignIn home");
               }
                else{
-                  Intent startNewActivity = new Intent(MainActivity.this, SignUpActivity.class);
+                  Intent startNewActivity = new Intent(HomePage.this, Register.class);
                   startActivity(startNewActivity);
                   Log.i("Content", "SignUp home");
               }

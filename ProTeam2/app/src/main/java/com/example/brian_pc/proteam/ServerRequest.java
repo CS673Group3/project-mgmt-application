@@ -30,7 +30,7 @@ public class ServerRequest {
 
     ProgressDialog progressDialog;
     public static final int CONNECTION_TIMEOUT = 1000*15;
-    public static final String SERVER_ADDRESS = "cs673.database.windows.net";
+    public static final String SERVER_ADDRESS = "168.122.15.84";
     public ServerRequest(Context context){
         progressDialog = new ProgressDialog(context);
         progressDialog.setCancelable(false);
@@ -83,7 +83,7 @@ public class ServerRequest {
           dataToSend.put("password",user.passWord);
           String encodedStr = getEncodedData(dataToSend);
            try{
-               URL url = new URL(SERVER_ADDRESS + "Register.aspx");
+               URL url = new URL(SERVER_ADDRESS);
                HttpURLConnection con = (HttpURLConnection) url.openConnection();
                con.setRequestMethod("POST");
                con.setDoInput(true);

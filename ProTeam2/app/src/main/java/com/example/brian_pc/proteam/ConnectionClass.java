@@ -17,16 +17,24 @@ public class ConnectionClass {
     String username ="Tester@c673";
     String password = "Stakes21";
 
+  /*  String ip= "BKABUYEL4/SQLEXPRESS";
+    String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+    String db = "AndroidProject";
+    String username = "3AMLabs/bkabuye";
+    String password = "Stakes21";*/
+
     @SuppressWarnings("NewApi")
     public Connection Conn(){
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         Connection conn = null;
-        String ConnURL = null;
+        String ConURL = null;
         try{
             Class.forName(driver);
-            ConnURL = "jdbc:jtds:sqlserver://"+ip+";"+"databaseName="+db+";user="+username+";password="+password+";";
-            conn = DriverManager.getConnection(ConnURL);
+            ConURL = "jdbc:sqlserver://"+ip+";"+"databaseName="+db+";user="+username+";password="+password+";";
+            conn = DriverManager.getConnection(ConURL);
+
+
         }catch(SQLException se){
             Log.e("ERROR", se.getMessage());
         }
@@ -37,6 +45,7 @@ public class ConnectionClass {
         }
          return conn;
     }
+
 
 
 }
