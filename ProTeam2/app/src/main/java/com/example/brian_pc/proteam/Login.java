@@ -14,6 +14,7 @@ import android.widget.Toast;
 public class Login extends AppCompatActivity{
 
     EditText userName, passWord;
+    TextView view;
     Button signIn;
     ImageButton backbutton;
     TextView forGot;
@@ -28,6 +29,7 @@ public class Login extends AppCompatActivity{
         signIn = (Button) findViewById(R.id.Submit);
         forGot = (TextView) findViewById(R.id.forgotPassword);
         backbutton = (ImageButton) findViewById(R.id.back_SignIn);
+         view = (TextView) findViewById(R.id.mTextView);
         View.OnClickListener handler = new View.OnClickListener(){
 
             @Override
@@ -53,8 +55,8 @@ public class Login extends AppCompatActivity{
                     }
                     else
                     {
-                        User user = new User(username, password);
-                        if(user.authenticate(username, password, Login.this)== true){
+                        User user = new User(username, password, Login.this);
+                        if(user.authenticate()== true){
                             Toast.makeText(Login.this, "Validation Successful", Toast.LENGTH_LONG).show();
                             UserLogIn(user);
                         }
@@ -92,4 +94,9 @@ public class Login extends AppCompatActivity{
          userLocalStore.setUserLoggedIn(true);
          startActivity(new Intent(this, HomePage.class));
    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
 }

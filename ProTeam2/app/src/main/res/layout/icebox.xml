@@ -4,7 +4,11 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="horizontal"
 android:background="@color/colorbackground"
-android:screenOrientation="portrait">
+>
 
-
+<TextView
+    android:id="@+id/mTextView"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:orientattion="vertical"/>
 </RelativeLayout>

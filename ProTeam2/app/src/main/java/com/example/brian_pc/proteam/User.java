@@ -15,6 +15,8 @@ import com.android.volley.toolbox.Volley;
  */
 public class User {
     String Firstname, Lastname, username, passWord, email;
+    Context context;
+
 
     /**
      * method to store data
@@ -38,19 +40,18 @@ public class User {
      * @param Username
      * @param Password
      */
-    public User(String Username, String Password) {
+    public User(String Username, String Password, Context context) {
 
         this.username = Username;
         this.passWord = Password;
-
-
-
+        this.context = context;
     }
 
-    public boolean authenticate(String userName, String passWord, Context context) {
+    public boolean authenticate() {
+
 // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(context.getApplicationContext());
-        String url ="http://168.122.15.84:8000/api-token-auth/";
+        String url = "http://168.122.15.84:8000/api-token-auth/";
 
 // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -58,18 +59,17 @@ public class User {
                     @Override
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
-                        //mTextView.setText("Response is: "+ response.substring(0,500));
-                        Log.d("", response);
+                       // view.setText("Response is: "+ response.substring(0,500));
+                        Log.d("", response.substring(0,500));
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                //mTextView.setText("That didn't work!");
+                Log.d("That didn't work!",error.getMessage());
             }
         });
 // Add the request to the RequestQueue.
         queue.add(stringRequest);
-
-        return false;
+        return true;
     }
 }
