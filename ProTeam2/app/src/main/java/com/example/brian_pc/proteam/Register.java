@@ -43,7 +43,7 @@ public class Register extends AppCompatActivity {
         View.OnClickListener handler = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.setEnabled(false);
+                //v.setEnabled(false);
                 pattern = Pattern.compile(EMAIL_PATTERN);
 
                 if (v == signUp) {
@@ -66,11 +66,13 @@ public class Register extends AppCompatActivity {
                         firstname.setError("FIELD CANNOT BE EMPTY, PLEASE ENTER FirstName");
                         lastname.setError("FIELD CANNOT BE EMPTY, PLEASE ENTER LastName");
                         email.setError("FIELD CANNOT BE EMPTY, PLEASE ENTER YOUR Email");
-                    } else if (!FirstName.matches("[a-zA-Z ]+") || !LastName.matches("[a-zA-Z ]+")) {
+                    } else if (FirstName.matches("[A-Z][a-zA-Z]*") || LastName.matches("[A-Z][a-zA-Z]*") || Username.matches("[A-Z][a-zA-Z]*")) {
                         firstname.requestFocus();
                         lastname.requestFocus();
+                        userName.requestFocus();
                         firstname.setError("ENTER ONLY ALPHABETICAL CHARACTER");
-                        lastname.setError("ENTER ONLY ALPHABETICAL CHARACTER");
+                        lastname.setError("ENTER ONLY ALPHABETICAL  CHARACTER");
+                        userName.setError("ENTER ONLY ALPHABETICAL  CHARACTER");
                     } else if (Pass.length() < 8 || confPass.length() < 8) {
                         passWord.requestFocus();
                         confirmPassWord.requestFocus();
@@ -109,9 +111,9 @@ public class Register extends AppCompatActivity {
     }
 
     private void registerNewUser(User newData) {
-       /* User newMember = new User(this);
-        newMember.addUser(newData);
-        startActivity(new Intent(Register.this, Login.class));*/
+        //User newMember = new User(this);
+        //newMember.addUser(newData);
+        startActivity(new Intent(Register.this, HomePage.class));
     }
 
 }

@@ -1,7 +1,9 @@
 package com.example.brian_pc.proteam;
 
 import android.content.Context;
+
 import android.util.Log;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -13,7 +15,7 @@ import com.android.volley.toolbox.Volley;
 /**
  * Created by bkabuye on 2/25/2016.
  */
-public class User {
+public class User{
     String Firstname, Lastname, username, passWord, email;
     Context context;
 
@@ -50,6 +52,7 @@ public class User {
     public boolean authenticate() {
 
 // Instantiate the RequestQueue.
+        //final TextView viewPanel = (TextView)findViewById(R.id.mTextView);
         RequestQueue queue = Volley.newRequestQueue(context.getApplicationContext());
         String url = "http://168.122.15.84:8000/api-token-auth/";
 
@@ -59,7 +62,11 @@ public class User {
                     @Override
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
-                       // view.setText("Response is: "+ response.substring(0,500));
+                     //   viewPanel.setText("Response is: "+ response.substring(0,500));
+                       // String message = viewPanel.getText().toString();
+                       // Intent intent = new Intent(icebox.class);
+                       // intent.putExtra("myText", message);
+                        //startActivity(intent);
                         Log.d("", response.substring(0,500));
                     }
                 }, new Response.ErrorListener() {
@@ -70,6 +77,6 @@ public class User {
         });
 // Add the request to the RequestQueue.
         queue.add(stringRequest);
-        return true;
+        return false;
     }
 }

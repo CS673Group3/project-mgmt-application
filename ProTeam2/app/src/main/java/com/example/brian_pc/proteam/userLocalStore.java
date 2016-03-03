@@ -10,6 +10,7 @@ public class userLocalStore {
 
     public static final String SP_NAME = "userDetails";
     SharedPreferences userLocalDatabase;
+    Context content;
 
     public userLocalStore(Context context){
         userLocalDatabase = context.getSharedPreferences(SP_NAME, 0);
@@ -28,7 +29,7 @@ public class userLocalStore {
     public User getLoggedInUser(){
         String username = userLocalDatabase.getString("username", "");
         String password = userLocalDatabase.getString("password", "");
-        User user = new User(username, password);
+        User user = new User(username, password, content);
           return user;
     }
 

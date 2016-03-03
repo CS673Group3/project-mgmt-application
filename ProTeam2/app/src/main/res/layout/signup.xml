@@ -199,7 +199,7 @@
         android:id="@+id/SignUpbtn"
         android:layout_width="325dp"
         android:layout_height="70dp"
-        android:layout_marginLeft="45dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="0dp"
         android:text="@string/signUp_name"
         android:textAllCaps="false"

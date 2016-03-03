@@ -4,17 +4,16 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.LoginFilter;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
 public class Login extends AppCompatActivity{
 
     EditText userName, passWord;
-    TextView view;
     Button signIn;
     ImageButton backbutton;
     TextView forGot;
@@ -29,13 +28,15 @@ public class Login extends AppCompatActivity{
         signIn = (Button) findViewById(R.id.Submit);
         forGot = (TextView) findViewById(R.id.forgotPassword);
         backbutton = (ImageButton) findViewById(R.id.back_SignIn);
-         view = (TextView) findViewById(R.id.mTextView);
+
         View.OnClickListener handler = new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
                 if(v == signIn){
                     v.setEnabled(false);
+                    userName.setEnabled(false);
+                    passWord.setEnabled(false);
                     String username = userName.getText().toString();
                     String password = passWord.getText().toString();
 
@@ -43,7 +44,7 @@ public class Login extends AppCompatActivity{
                         userName.requestFocus();
                         userName.setError("FIELD CANNOT BE EMPTY, PLEASE ENTER USERNAME");
                     }
-                    else if(!username.matches("[a-zA-Z ]+"))
+                    else if(!username.matches("[a-zA-Z]+"))
                     {
                         userName.requestFocus();
                         userName.setError("ENTER ONLY ALPHABETICAL CHARACTER");
@@ -57,12 +58,10 @@ public class Login extends AppCompatActivity{
                     {
                         User user = new User(username, password, Login.this);
                         if(user.authenticate()== true){
-                            Toast.makeText(Login.this, "Validation Successful", Toast.LENGTH_LONG).show();
                             UserLogIn(user);
+                            Toast.makeText(Login.this, "Validation Successful", Toast.LENGTH_LONG).show();
                         }
-
                     }
-
                 }
                  else if (v == forGot){
                          goback();
@@ -90,7 +89,7 @@ public class Login extends AppCompatActivity{
     }
 
     private void UserLogIn(User returneduser){
-       userLocalStore.storeUserData(returneduser);
+        userLocalStore.storeUserData(returneduser);
          userLocalStore.setUserLoggedIn(true);
          startActivity(new Intent(this, HomePage.class));
    }

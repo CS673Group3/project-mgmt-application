@@ -20,4 +20,5 @@
     <string name="title_activity_sig_in">SigIn</string>
     <string name="title_activity_sign_in">SignIn</string>
     <string name="title_activity_sign_up">SignUp</string>
+    <string name="title_activity_ice_box">icebox</string>
 </resources>
