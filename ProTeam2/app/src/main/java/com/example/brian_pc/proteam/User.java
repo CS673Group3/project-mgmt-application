@@ -52,8 +52,7 @@ public class User{
     public boolean authenticate() {
 
 // Instantiate the RequestQueue.
-        //final TextView viewPanel = (TextView)findViewById(R.id.mTextView);
-        RequestQueue queue = Volley.newRequestQueue(context.getApplicationContext());
+        RequestQueue queue = Volley.newRequestQueue(context);
         String url = "http://168.122.15.84:8000/api-token-auth/";
 
 // Request a string response from the provided URL.
@@ -61,15 +60,11 @@ public class User{
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
+                        //Display the first 500 characters of the response string.
                      //   viewPanel.setText("Response is: "+ response.substring(0,500));
-                       // String message = viewPanel.getText().toString();
-                       // Intent intent = new Intent(icebox.class);
-                       // intent.putExtra("myText", message);
-                        //startActivity(intent);
                         Log.d("", response.substring(0,500));
                     }
-                }, new Response.ErrorListener() {
+                }, new Response.ErrorListener(){
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d("That didn't work!",error.getMessage());

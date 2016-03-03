@@ -58,8 +58,8 @@ public class Login extends AppCompatActivity{
                     {
                         User user = new User(username, password, Login.this);
                         if(user.authenticate()== true){
-                            UserLogIn(user);
                             Toast.makeText(Login.this, "Validation Successful", Toast.LENGTH_LONG).show();
+                            UserLogIn(user);
                         }
                     }
                 }
