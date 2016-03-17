@@ -5,10 +5,15 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.android.volley.Cache;
+import com.android.volley.Network;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.BasicNetwork;
+import com.android.volley.toolbox.DiskBasedCache;
+import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -50,9 +55,12 @@ public class User{
     }
 
     public boolean authenticate() {
-
-// Instantiate the RequestQueue.
-        RequestQueue queue = Volley.newRequestQueue(context);
+        RequestQueue queue;
+        Cache cache = new DiskBasedCache(context.getCacheDir(), 1024*1024);
+        Network network = new BasicNetwork(new HurlStack());
+        queue = new RequestQueue(cache, network);
+        queue.start();
+        //url to get to
         String url = "http://168.122.15.84:8000/api-token-auth/";
 
 // Request a string response from the provided URL.
@@ -61,7 +69,7 @@ public class User{
                     @Override
                     public void onResponse(String response) {
                         //Display the first 500 characters of the response string.
-                     //   viewPanel.setText("Response is: "+ response.substring(0,500));
+                        //   viewPanel.setText("Response is: "+ response.substring(0,500));
                         Log.d("", response.substring(0,500));
                     }
                 }, new Response.ErrorListener(){
